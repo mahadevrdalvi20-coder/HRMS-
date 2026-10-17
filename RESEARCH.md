@@ -43,6 +43,7 @@ Companies set a grace time (here 10:15). Repeated lates convert to LOP (here eve
 4. WFH day with ≥ 8 h ⇒ **WFH**, counts as Present.
 5. Check-in strictly after 10:15:00 IST ⇒ **Late**. Every 3rd Late in a calendar month (3rd, 6th, …) ⇒ 0.5 day LOP.
 6. Priority: approved leave ⇒ **On Leave** (even if punched) > location holiday ⇒ **Holiday** > location weekly off ⇒ **Weekly Off** > punches.
+   National and State holidays are days off; **Optional** holidays are listed but remain working days (use CL to take one).
 7. One attendance row per employee per date.
 8. A regularisation request changes attendance only after manager (or HR) approval. HR may correct directly with a mandatory reason that is logged.
 

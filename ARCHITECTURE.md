@@ -11,7 +11,7 @@
 | Database | Supabase Postgres (free tier) | Real Postgres: unique / check / foreign-key constraints, sequences for employee codes, `plpgsql` functions for atomic balance changes, row-level security | Firebase Firestore: no relational constraints, so "one attendance row per day" would rely on app code |
 | Auth | Clerk (free tier) | Hosted sign-in, email codes, test-mode emails for demo users. Clerk only proves *who* the user is; the role comes from our database | Supabase Auth: would work, but Clerk is the course default and keeps auth separate from data |
 | Email | Resend (free tier, 100/day) | One HTTP call, works from Vercel. If no key is set, mails are written to the server log so the app still works | Gmail SMTP: app passwords, rate limits and spam issues |
-| AI agent | Vercel AI SDK v5 + Google Gemini 2.5 Flash (free tier) | AI SDK gives typed tools (`zod` schemas), multi-step tool calling and a chat UI hook. Gemini free tier allows ~10 requests/min, ~250/day for Flash (check current limits before the demo) | Groq Llama: fast, but tool calling with long schemas was less reliable in testing |
+| AI agent | Vercel AI SDK v5 + Google Gemini Flash (`gemini-flash-latest`, free tier; override with `AGENT_MODEL`) | AI SDK gives typed tools (`zod` schemas), multi-step tool calling and a chat UI hook. Gemini free tier allows ~10 requests/min, ~250/day for Flash (check current limits before the demo) | Groq Llama: fast, but tool calling with long schemas was less reliable in testing |
 | Tests | Vitest | Fast, TypeScript native, runs pure business-rule functions without a database | Jest: slower TS setup |
 
 ## 2. System diagram
@@ -108,7 +108,7 @@ Day status is **calculated on read**, not stored: a holiday added later or a lea
 
 ## 6. AI agent
 
-- Library: Vercel AI SDK v5 (`streamText`, `tool`, `useChat`). Model: `gemini-2.5-flash` via `@ai-sdk/google`.
+- Library: Vercel AI SDK v5 (`streamText`, `tool`, `useChat`). Model: `gemini-flash-latest` via `@ai-sdk/google` (set `AGENT_MODEL` to pin a version).
 - Route: `app/api/agent/route.ts`. It calls `requireSession()` first; tools are built per request by `lib/agent/tools.ts → buildTools(session)` and only include tools the user's role may use.
 
 | Tool | Who | Input | Output |
@@ -135,12 +135,13 @@ app/(employees)   /profile, /employees, /employees/new, /employees/[id], /employ
 app/(attendance)  /attendance, /attendance/team
 app/(leave)       /leave, /leave/apply, /leave/calendar, /approvals
 app/(reports)     /reports, /api/reports/csv
-app/(agent)       /ask-hr
-app/api/agent     agent chat route
+app/(agent)       /ask-hr, /api/agent (chat route)
 lib/auth lib/dates lib/db lib/employees lib/attendance lib/leave lib/reports lib/agent lib/email
 components/       shell, badges, calendar, forms
 supabase/migrations/   SQL schema (single source of truth for tables)
 scripts/seed.ts   seed data
+scripts/run-agent-tests.ts   runs tests/agent/prompts.json against the real agent
+scripts/dev/smoke.ts         integration checks against a seeded database
 tests/<module>/   vitest tests
 ```
 
@@ -171,3 +172,9 @@ tests/<module>/   vitest tests
 | 2026-10-17 | Added `policy_documents` and `agent_log` tables | Required by the agent: policy answers only from stored text; every tool call logged |
 | 2026-10-17 | Late LOP: every 3rd Late in a calendar month (3rd, 6th, 9th …) adds 0.5 day LOP, calculated on read | Matches the rule "three Lates convert into one half day" and stays correct after regularisation |
 | 2026-10-17 | A leave request must stay inside one calendar year | Balances are per leave year (Jan–Dec) |
+| 2026-10-17 | Optional holidays are listed per location but stay working days (employee takes CL to use one) | Matches how restricted holidays work (research Q6); National and State holidays are days off |
+| 2026-10-17 | Seed: the HR Admin reports to the Finance & Admin Manager | Otherwise nobody could approve HR's own leave (self-approval is blocked) |
+| 2026-10-17 | LOP conversion uses whole days of balance (floor); the earliest working days use the balance, the rest become one LOP request | Keeps both requests as simple date ranges |
+| 2026-10-17 | Agent model id `gemini-flash-latest` instead of a pinned version | Pinned preview ids are retired regularly on the free tier |
+| 2026-10-17 | Login is allowed before the joining date (Home shows "starts on your first working day"); check-in is blocked until then | DESIGN.md empty state for new joiners |
+| 2026-10-17 | Deactivation is blocked while the employee still has active direct reports | Their requests would have no approver |

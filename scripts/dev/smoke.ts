@@ -114,7 +114,7 @@ async function main() {
   const r3 = await db().rpc("cancel_leave_request", { p_request: p.request.id, p_employee: p.employee.id, p_today: sunil.today });
   ok(!r3.error, "Cancel approved future leave", r3.error?.message);
   const restored = (await getBalances(p.employee, y, sunil.today)).find((b) => b.type.code === "CL")!;
-  ok(restored.used === before.used && restored.available === before.available + 1, "Cancel restores the balance", restored);
+  ok(restored.used === before.used && restored.available === (before.available ?? 0) + 1, "Cancel restores the balance", restored);
 
   // create_employee
   const dept = (await db().from("departments").select("id").limit(1).single()).data!;
