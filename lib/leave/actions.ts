@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { randomUUID } from "node:crypto";
 import { db, must } from "@/lib/db";
 import { canDecideFor, requireSession, type Session } from "@/lib/auth";
-import { formatDate, yearOf } from "@/lib/dates";
+import { yearOf } from "@/lib/dates";
 import { appUrl, sendEmail } from "@/lib/email";
 import { leaveDecidedEmail, leaveRequestedEmail } from "@/lib/email/templates";
 import { holidaysFor } from "@/lib/attendance/queries";
