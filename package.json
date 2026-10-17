@@ -1,0 +1,38 @@
+{
+  "name": "lehar-hrms",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:tz": "TZ=America/New_York vitest run && TZ=Asia/Tokyo vitest run",
+    "seed": "tsx scripts/seed.ts",
+    "test:agent": "tsx scripts/run-agent-tests.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^2.0.103",
+    "@ai-sdk/react": "^2.0.280",
+    "@clerk/nextjs": "^6.39.7",
+    "@supabase/supabase-js": "^2.118.0",
+    "ai": "^5.0.277",
+    "next": "^15.5.28",
+    "react": "^19.1.10",
+    "react-dom": "^19.1.10",
+    "resend": "^4.8.0",
+    "server-only": "^0.0.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "dotenv": "^18.0.8",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
