@@ -176,6 +176,7 @@ table.table { width: 100%; border-collapse: collapse; }
 .cal .day .n { font-weight: 800; }
 .cal .day.today { outline: 2px solid var(--teal); }
 .cal .day.clash { outline: 2px solid var(--danger); }
+.cal .day.selected { outline: 3px solid var(--saffron); }
 @media (max-width: 640px) { .cal .day { min-height: 56px; padding: 4px; font-size: 11px; } .cal .day .badge { padding: 0 4px; font-size: 10.5px; } }
 
 /* ---------- tabs ---------- */
