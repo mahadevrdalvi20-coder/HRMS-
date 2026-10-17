@@ -49,7 +49,7 @@ type Seed = {
 };
 
 const PEOPLE: Seed[] = [
-  { key: "asha", first: "Asha", last: "Naik", gender: "Female", dob: "1986-04-12", doj: "2015-06-01", designation: "HR Manager", grade: "M2", dept: "Human Resources", loc: "HO", hr: true },
+  { key: "asha", first: "Asha", last: "Naik", gender: "Female", dob: "1986-04-12", doj: "2015-06-01", designation: "HR Manager", grade: "M2", dept: "Human Resources", loc: "HO", hr: true, manager: "rohan" },
   { key: "rohan", first: "Rohan", last: "Kamat", gender: "Male", dob: "1982-09-03", doj: "2012-02-15", designation: "Finance & Admin Manager", grade: "M2", dept: "Finance & Accounts", loc: "HO" },
   { key: "sunil", first: "Sunil", last: "Gaonkar", gender: "Male", dob: "1980-11-21", doj: "2010-08-01", designation: "Plant Manager", grade: "M3", dept: "Production", loc: "PLANT" },
   { key: "priya", first: "Priya", last: "Dessai", gender: "Female", dob: "1988-01-30", doj: "2017-03-20", designation: "Sales Manager", grade: "M2", dept: "Sales & Marketing", loc: "HO" },
