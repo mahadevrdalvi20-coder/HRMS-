@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { applyLeave, previewLeave, type LeavePreview } from "@/lib/leave/actions";
+import { applyLeave, previewLeave } from "@/lib/leave/actions";
+import type { LeavePreview } from "@/lib/leave/evaluate";
 import { dayName, formatDate } from "@/lib/dates";
 
 type TypeOpt = { id: string; code: string; name: string; half_day_allowed: boolean; available: number | null; eligible: boolean; certAfter: number | null };

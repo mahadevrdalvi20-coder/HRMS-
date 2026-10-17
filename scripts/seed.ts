@@ -152,7 +152,7 @@ async function main() {
       { code: "MAT", name: "Maternity Leave", annual_quota: 182, accrual_method: "on_request", carry_forward_max: 0, half_day_allowed: false, count_calendar_days: true, gender_restriction: "Female", sort_order: 4 },
       { code: "PAT", name: "Paternity Leave", annual_quota: 5, accrual_method: "on_request", carry_forward_max: 0, half_day_allowed: false, gender_restriction: "Male", sort_order: 5 },
       { code: "LOP", name: "Loss of Pay", annual_quota: null, accrual_method: "none", carry_forward_max: 0, half_day_allowed: true, sort_order: 6 },
-    ]).select(),
+    ], { defaultToNull: false }).select(),
     "leave types",
   );
   const typeId = Object.fromEntries(types.map((t: { code: string; id: string }) => [t.code, t.id]));
