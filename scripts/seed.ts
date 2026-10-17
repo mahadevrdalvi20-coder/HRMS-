@@ -198,7 +198,7 @@ async function main() {
       }).select("id").single(),
       `employee ${p.first}`,
     );
-    idByKey[p.key] = (row as { id: string }).id;
+    idByKey[p.key] = (row as unknown as { id: string }).id;
     const letters = (p.last + "XXXXX").toUpperCase().replace(/[^A-Z]/g, "");
     await must(
       sb.from("employee_statutory").insert({
