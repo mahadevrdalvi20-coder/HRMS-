@@ -6,6 +6,7 @@ import { db, must } from "@/lib/db";
 import { canDecideFor, requireSession, type Session } from "@/lib/auth";
 import { formatDate, yearOf } from "@/lib/dates";
 import { appUrl, sendEmail } from "@/lib/email";
+import { leaveDecidedEmail, leaveRequestedEmail } from "@/lib/email/templates";
 import { holidaysFor } from "@/lib/attendance/queries";
 import { teamClashes } from "@/lib/leave/clashes";
 import type { ActionResult, Employee, LeaveRequest, LeaveType } from "@/lib/types";
@@ -67,8 +68,8 @@ export async function previewLeave(f: LeaveForm, hasCertificate: boolean): Promi
 async function notifyManager(s: Session, reqs: { code: string; from: string; to: string; days: number }[], reason: string) {
   if (!s.employee.reporting_manager_id) return;
   const mgr = must(await db().from("employees").select("email, full_name").eq("id", s.employee.reporting_manager_id).single(), "manager") as { email: string; full_name: string };
-  const lines = reqs.map((r) => `${r.code}: ${formatDate(r.from)} to ${formatDate(r.to)} (${r.days} day${r.days === 1 ? "" : "s"})`).join("\n");
-  await sendEmail(mgr.email, `Leave request from ${s.employee.full_name}`, `Hi ${mgr.full_name.split(" ")[0]},\n\n${s.employee.full_name} (${s.employee.employee_code}) applied for leave:\n${lines}\nReason: ${reason}\n\nApprove or reject: ${appUrl("/approvals")}`);
+  const mail = leaveRequestedEmail(mgr, s.employee, reqs, reason, appUrl("/approvals"));
+  await sendEmail(mail.to, mail.subject, mail.text);
 }
 
 /**
@@ -169,8 +170,8 @@ export async function decideLeave(id: string, approve: boolean, comment: string)
 
   const types = await leaveTypes(false);
   const code = types.find((t) => t.id === req.leave_type_id)?.code ?? "Leave";
-  await sendEmail(emp.email, `Your ${code} request was ${approve ? "approved" : "rejected"}`,
-    `Hi ${emp.full_name.split(" ")[0]},\n\nYour ${code} for ${formatDate(req.from_date)} to ${formatDate(req.to_date)} (${req.days} day${Number(req.days) === 1 ? "" : "s"}) was ${approve ? "approved" : "rejected"} by ${s.employee.full_name}.${comment ? `\nComment: ${comment}` : ""}\n\n${appUrl("/leave")}`);
+  const mail = leaveDecidedEmail(emp, s.employee.full_name, { code, from: req.from_date, to: req.to_date, days: Number(req.days) }, approve, comment?.trim() || null, appUrl("/leave"));
+  await sendEmail(mail.to, mail.subject, mail.text);
   revalidatePath("/approvals");
   return { ok: true, message: approve ? `Approved. ${emp.full_name}'s balance is updated.` : "Rejected. Pending days released." };
 }
