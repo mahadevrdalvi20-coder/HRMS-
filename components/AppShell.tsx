@@ -15,8 +15,8 @@ export function AppShell({ session, children }: { session: Session; children: Re
         </Link>
         <nav aria-label="Main">
           <NavLink href="/">Home</NavLink>
-          <NavLink href="/attendance">My attendance</NavLink>
-          <NavLink href="/leave">My leave</NavLink>
+          <NavLink href="/attendance" exact>My attendance</NavLink>
+          <NavLink href="/leave" exact>My leave</NavLink>
           <NavLink href="/leave/apply">Apply leave</NavLink>
           <NavLink href="/ask-hr">Ask HR</NavLink>
           <NavLink href="/profile">My profile</NavLink>

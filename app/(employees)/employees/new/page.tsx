@@ -1,7 +1,8 @@
 import { requireHr } from "@/lib/auth";
 import { isActiveOn } from "@/lib/auth/rules";
 import { loadOrgData } from "@/lib/employees/queries";
-import { EmployeeForm, EMPTY_EMPLOYEE } from "@/components/employees/EmployeeForm";
+import { EmployeeForm } from "@/components/employees/EmployeeForm";
+import { EMPTY_EMPLOYEE } from "@/lib/employees/validation";
 import { PageHead } from "@/components/ui";
 
 export default async function NewEmployee() {

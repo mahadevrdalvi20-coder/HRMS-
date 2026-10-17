@@ -12,12 +12,6 @@ type Option = { id: string; name: string };
 const STEPS = ["Personal", "Job", "Statutory & bank", "Emergency contact", "Review"] as const;
 const STEP_KEYS = ["personal", "job", "statutory", "emergency"] as const;
 
-export const EMPTY_EMPLOYEE: EmployeeInput = {
-  full_name: "", email: "", mobile: "", dob: "", gender: "", address_line: "", city: "", state: "Goa", pin_code: "",
-  date_of_joining: "", designation: "", grade: "", department_id: "", location_id: "", reporting_manager_id: "", is_hr_admin: false,
-  pan: "", aadhaar: "", uan: "", account_number: "", ifsc: "", bank_name: "",
-  emergency_name: "", emergency_relation: "", emergency_mobile: "",
-};
 
 export function EmployeeForm({
   mode, employeeId, initial, departments, locations, managers, masked,

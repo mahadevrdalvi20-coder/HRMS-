@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import { requireHr } from "@/lib/auth";
 import { isActiveOn } from "@/lib/auth/rules";
 import { getProfile, loadOrgData } from "@/lib/employees/queries";
-import { EmployeeForm, EMPTY_EMPLOYEE } from "@/components/employees/EmployeeForm";
+import { EmployeeForm } from "@/components/employees/EmployeeForm";
+import { EMPTY_EMPLOYEE } from "@/lib/employees/validation";
 import { PageHead } from "@/components/ui";
 
 export default async function EditEmployee({ params }: { params: Promise<{ id: string }> }) {

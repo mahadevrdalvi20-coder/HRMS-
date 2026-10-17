@@ -66,6 +66,14 @@ export type EmployeeInput = {
   emergency_name: string; emergency_relation: string; emergency_mobile: string;
 };
 
+/** Blank form values (shared by server pages and the client form). */
+export const EMPTY_EMPLOYEE: EmployeeInput = {
+  full_name: "", email: "", mobile: "", dob: "", gender: "", address_line: "", city: "", state: "Goa", pin_code: "",
+  date_of_joining: "", designation: "", grade: "", department_id: "", location_id: "", reporting_manager_id: "", is_hr_admin: false,
+  pan: "", aadhaar: "", uan: "", account_number: "", ifsc: "", bank_name: "",
+  emergency_name: "", emergency_relation: "", emergency_mobile: "",
+};
+
 export const STEP_FIELDS: Record<"personal" | "job" | "statutory" | "emergency", (keyof EmployeeInput)[]> = {
   personal: ["full_name", "email", "mobile", "dob", "gender", "address_line", "city", "state", "pin_code"],
   job: ["date_of_joining", "designation", "grade", "department_id", "location_id", "reporting_manager_id", "is_hr_admin"],
