@@ -178,3 +178,4 @@ tests/<module>/   vitest tests
 | 2026-10-17 | Agent model id `gemini-flash-latest` instead of a pinned version | Pinned preview ids are retired regularly on the free tier |
 | 2026-10-17 | Login is allowed before the joining date (Home shows "starts on your first working day"); check-in is blocked until then | DESIGN.md empty state for new joiners |
 | 2026-10-17 | Deactivation is blocked while the employee still has active direct reports | Their requests would have no approver |
+| 2026-11-17 | When the Clerk or Supabase keys are missing, the root layout shows a "setup needed" page (variable names only) and the middleware lets requests through | A first Vercel deploy without keys crashed the build at prerender ("Missing publishableKey"). Data stays protected: every page and API route still goes through `lib/auth` |
