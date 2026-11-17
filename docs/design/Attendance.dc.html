@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lehar · My attendance</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:#15212B;background:#F4F3EE}
+a{color:#0B4F4A}a:hover{color:#083a36}
+.card{background:#fff;border:1px solid #E3E1DA;border-radius:16px;padding:22px}
+.h2{margin:0;font-size:17px;font-weight:700}
+.cap{font-size:12.5px;color:#55606A;font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:14px;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.in{font:inherit;font-size:14px;border:1px solid #D6D3CA;border-radius:10px;min-height:44px;padding:0 12px;background:#fff;color:#15212B;box-sizing:border-box;width:100%}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700}
+.stat{background:#F7F6F2;border-radius:12px;padding:12px 14px}
+.stat b{display:block;font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1080px; background: #F4F3EE">
+<div style="flex: 1 1 248px; max-width: 100%; background: #0B4F4A">
+<dc-import name="Sidebar" active="Attendance" hint-size="248px,1080px"></dc-import>
+</div>
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box">
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
+<div>
+<p class="cap" style="margin: 0 0 4px">Panaji head office · Mon–Fri · all times IST</p>
+<h1 style="margin: 0; font-size: 28px; font-weight: 800">My attendance</h1>
+</div>
+<div style="display: flex; gap: 8px; align-items: center">
+<button class="btn" aria-label="Previous month" style="background: #fff; border: 1px solid #E3E1DA; width: 44px; padding: 0">‹</button>
+<span style="font-weight: 800; font-size: 16px; min-width: 130px; text-align: center">November 2026</span>
+<button class="btn" aria-label="Next month" style="background: #fff; border: 1px solid #E3E1DA; width: 44px; padding: 0">›</button>
+</div>
+</header>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px">
+<div class="stat"><span class="cap">Present</span><b>6</b></div>
+<div class="stat"><span class="cap">WFH</span><b>1</b></div>
+<div class="stat"><span class="cap">Half day</span><b>1</b></div>
+<div class="stat"><span class="cap">On leave</span><b>5</b></div>
+<div class="stat"><span class="cap">Late marks</span><b>1</b></div>
+<div class="stat"><span class="cap">LOP days</span><b>0.5</b></div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section class="card" style="flex: 999 1 560px; min-width: 0">
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{heads}}" as="h" hint-placeholder-count="7">
+<div class="cap" style="text-align: center; font-weight: 800">{{h}}</div>
+</sc-for>
+<sc-for list="{{days}}" as="d" hint-placeholder-count="35">
+<div style="{{d.style}}">
+<div style="font-size: 13px; font-weight: 800">{{d.n}}</div>
+<div style="{{d.badge}}">{{d.code}}</div>
+<div style="font-size: 11px; color: #55606A; font-variant-numeric: tabular-nums">{{d.time}}</div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px">
+<span class="pill" style="background: #DDF1E5; color: #17663F">P Present</span>
+<span class="pill" style="background: #DCF0F4; color: #0B6476">WFH</span>
+<span class="pill" style="background: #FCEFCF; color: #8A5300">HD Half day</span>
+<span class="pill" style="background: #FBE2DE; color: #A32014">A Absent</span>
+<span class="pill" style="background: #E1E9FA; color: #2A50A8">L On leave</span>
+<span class="pill" style="background: #EEE4F8; color: #6B2FA0">H Holiday</span>
+<span class="pill" style="background: #ECEDEF; color: #4F5862">WO Weekly off</span>
+<span class="pill" style="background: #FFE6D2; color: #A3410A">LT Late</span>
+</div>
+</section>
+
+<aside style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 20px">
+<section class="card" style="display: flex; flex-direction: column; gap: 10px">
+<h2 class="h2">Wed, 11 November</h2>
+<span class="pill" style="background: #FCEFCF; color: #8A5300; align-self: flex-start">Half day · 5 h 10 m</span>
+<div style="display: flex; justify-content: space-between; font-size: 14px"><span class="cap">Check in</span><b>09:12</b></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px"><span class="cap">Check out</span><b>14:22</b></div>
+<p class="cap" style="margin: 0">4 to under 8 hours = Half day. 8 hours or more = Present.</p>
+</section>
+<section class="card" style="display: flex; flex-direction: column; gap: 14px">
+<h2 class="h2">Request regularisation</h2>
+<label class="field">Date<input class="in" value="11 Nov 2026"></label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<label class="field">Correct in<input class="in" value="09:12"></label>
+<label class="field">Correct out<input class="in" value="18:30"></label>
+</div>
+<label class="field">Reason<textarea class="in" rows="3" style="padding: 10px 12px; min-height: 80px">Forgot to check out after the vendor audit at Verna.</textarea></label>
+<button class="btn" style="background: #0B4F4A; color: #fff; border: 0">Send to Rohan Kamat</button>
+<p class="cap" style="margin: 0">Attendance changes only after your manager approves.</p>
+</section>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const C = {
+      P: ['#DDF1E5', '#17663F'], WFH: ['#DCF0F4', '#0B6476'], HD: ['#FCEFCF', '#8A5300'], A: ['#FBE2DE', '#A32014'],
+      L: ['#E1E9FA', '#2A50A8'], H: ['#EEE4F8', '#6B2FA0'], WO: ['#ECEDEF', '#4F5862'], LT: ['#FFE6D2', '#A3410A']
+    };
+    const map = { 2: 'L', 3: 'L', 4: 'L', 5: 'L', 6: 'L', 9: 'P', 10: 'LT', 11: 'HD', 12: 'P', 13: 'WFH', 16: 'P' };
+    const times = { 9: '09:04–18:20', 10: '10:24–19:01', 11: '09:12–14:22', 12: '09:08–18:15', 13: 'WFH', 16: '09:15–18:10', 17: 'Today' };
+    const days = [];
+    for (let i = 0; i < 6; i++) days.push({ n: '', code: '', time: '', style: 'min-height:84px', badge: 'display:none' });
+    for (let n = 1; n <= 30; n++) {
+      const dow = (n + 6) % 7; // 0 = Sunday; 1 Nov 2026 is a Sunday
+      let code = map[n] || '';
+      if (dow === 0 || dow === 6) code = 'WO';
+      const today = n === 17;
+      const c = C[code];
+      days.push({
+        n, code, time: times[n] || '',
+        style: 'min-height:84px;border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px;box-sizing:border-box;background:' + (n > 17 ? '#FBFAF7' : '#fff') + ';border:' + (today ? '2px solid #0B4F4A' : '1px solid #EEECE6') + (n === 11 ? ';box-shadow:0 0 0 3px #E8833A55' : ''),
+        badge: c ? 'align-self:flex-start;border-radius:999px;padding:2px 8px;font-size:11.5px;font-weight:800;background:' + c[0] + ';color:' + c[1] : 'display:none'
+      });
+    }
+    return { heads: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], days };
+  }
+}
+</script>
+</body>
+</html>

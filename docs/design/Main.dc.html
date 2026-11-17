@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lehar · Home dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:#15212B;background:#F4F3EE}
+a{color:#0B4F4A}a:hover{color:#083a36}
+.card{background:#fff;border:1px solid #E3E1DA;border-radius:16px;padding:22px}
+.h2{margin:0;font-size:17px;font-weight:700}
+.cap{font-size:12.5px;color:#55606A;font-weight:500}
+.mono{font-family:'IBM Plex Mono',monospace}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700}
+.btn{font:inherit;font-weight:700;font-size:14px;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #EEECE6}
+.bar{height:6px;border-radius:99px;background:#EEECE6;overflow:hidden}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1080px; background: #F4F3EE">
+<div style="flex: 1 1 248px; max-width: 100%; background: #0B4F4A">
+<dc-import name="Sidebar" active="Home" hint-size="248px,1080px"></dc-import>
+</div>
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px 32px; display: flex; flex-direction: column; gap: 24px; box-sizing: border-box">
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div>
+<p class="cap" style="margin: 0 0 4px">Tuesday, 17 November 2026 · 09:42 IST · Panaji head office</p>
+<h1 style="margin: 0; font-size: 28px; font-weight: 800">Good morning, Amit</h1>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<label style="display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #E3E1DA; border-radius: 10px; padding: 0 12px; min-height: 44px; width: 280px; max-width: 100%">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#55606A" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+<input type="search" placeholder="Search people, requests, jobs" aria-label="Search" style="border: 0; outline: 0; font: inherit; font-size: 14px; width: 100%; background: transparent">
+</label>
+<button class="btn" aria-label="Notifications" style="background: #fff; border: 1px solid #E3E1DA; width: 44px; padding: 0; position: relative">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15212B" stroke-width="2" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10 21a2 2 0 0 0 4 0"></path></svg>
+<span style="position: absolute; top: 9px; right: 10px; width: 8px; height: 8px; border-radius: 99px; background: #E8833A"></span>
+</button>
+</div>
+</header>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<div class="card" style="background: #0B4F4A; border-color: #0B4F4A; color: #fff; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 13px; font-weight: 700; color: #CFE5E0">TODAY · HEAD OFFICE (MON–FRI)</span>
+<span class="pill" style="background: #ECEDEF; color: #4F5862">Not checked in</span>
+</div>
+<div style="font-size: 56px; font-weight: 800; letter-spacing: -1px; font-variant-numeric: tabular-nums">09:42<span style="font-size: 20px; font-weight: 600; color: #CFE5E0"> IST</span></div>
+<button class="btn" style="background: #E8833A; color: #15212B; border: 0; min-height: 56px; font-size: 17px">Check in</button>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: #E2EFEC">
+<input type="checkbox" style="width: 18px; height: 18px"> Working from home today (counts as Present)
+</label>
+<p style="margin: 0; font-size: 13px; color: #CFE5E0">Late after 10:15 · 1 Late this month · 3 Lates = ½ day LOP</p>
+</div>
+
+<div class="card" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 class="h2">My leave balance · 2026</h2>
+<a href="ApplyLeave.dc.html" style="font-weight: 700; font-size: 14px">Apply leave</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<div style="background: #F7F6F2; border-radius: 12px; padding: 14px">
+<div class="cap">Casual · CL</div>
+<div style="font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums">5.5</div>
+<div class="cap">of 8 · 1 pending</div>
+</div>
+<div style="background: #F7F6F2; border-radius: 12px; padding: 14px">
+<div class="cap">Sick · SL</div>
+<div style="font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums">6</div>
+<div class="cap">of 7</div>
+</div>
+<div style="background: #F7F6F2; border-radius: 12px; padding: 14px">
+<div class="cap">Earned · EL</div>
+<div style="font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums">21.5</div>
+<div class="cap">9 carried + 12.5 accrued</div>
+</div>
+</div>
+<div>
+<div class="row"><span style="font-size: 14px">CL · 24 Nov (½ day)</span><span class="pill" style="background: #FFF1C7; color: #7A5200">Pending · Rohan</span></div>
+<div class="row"><span style="font-size: 14px">EL · 2–6 Nov · 5 days</span><span class="pill" style="background: #DDF1E5; color: #17663F">Approved</span></div>
+</div>
+</div>
+
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<h2 class="h2">This week</h2>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; text-align: center">
+<div><div class="cap">Mon</div><div class="pill" style="background: #DDF1E5; color: #17663F; justify-content: center; width: 100%; box-sizing: border-box">P</div></div>
+<div><div class="cap">Tue</div><div class="pill" style="background: #fff; color: #55606A; border: 1px dashed #B9B6AC; justify-content: center; width: 100%; box-sizing: border-box">—</div></div>
+<div><div class="cap">Wed</div><div class="pill" style="background: #F7F6F2; color: #8A9097; justify-content: center; width: 100%; box-sizing: border-box">·</div></div>
+<div><div class="cap">Thu</div><div class="pill" style="background: #F7F6F2; color: #8A9097; justify-content: center; width: 100%; box-sizing: border-box">·</div></div>
+<div><div class="cap">Fri</div><div class="pill" style="background: #F7F6F2; color: #8A9097; justify-content: center; width: 100%; box-sizing: border-box">·</div></div>
+<div><div class="cap">Sat</div><div class="pill" style="background: #ECEDEF; color: #4F5862; justify-content: center; width: 100%; box-sizing: border-box">WO</div></div>
+<div><div class="cap">Sun</div><div class="pill" style="background: #ECEDEF; color: #4F5862; justify-content: center; width: 100%; box-sizing: border-box">WO</div></div>
+</div>
+<div class="row"><span class="cap">Upcoming holidays</span><a href="Attendance.dc.html" style="font-size: 13px; font-weight: 700">Calendar</a></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px"><span>3 Dec · Feast of St Francis Xavier</span><span class="pill" style="background: #EEE4F8; color: #6B2FA0">State</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px"><span>19 Dec · Goa Liberation Day</span><span class="pill" style="background: #EEE4F8; color: #6B2FA0">State</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px"><span>25 Dec · Christmas</span><span class="pill" style="background: #EEE4F8; color: #6B2FA0">National</span></div>
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px">
+<div class="card">
+<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px">
+<h2 class="h2">My team today</h2>
+<span class="cap">6 direct reports</span>
+</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px">
+<span class="pill" style="background: #DDF1E5; color: #17663F">3 Present</span>
+<span class="pill" style="background: #DCF0F4; color: #0B6476">1 WFH</span>
+<span class="pill" style="background: #E1E9FA; color: #2A50A8">1 On Leave</span>
+<span class="pill" style="background: #FBE2DE; color: #A32014">1 Not in yet</span>
+</div>
+<div class="row"><span style="font-size: 14px"><b>Neha Kerkar</b> · Accounts Executive</span><span class="pill" style="background: #DDF1E5; color: #17663F">In 09:05</span></div>
+<div class="row"><span style="font-size: 14px"><b>Sameer Naik</b> · Sales Executive</span><span class="pill" style="background: #DCF0F4; color: #0B6476">WFH 09:20</span></div>
+<div class="row"><span style="font-size: 14px"><b>Kavya Desai</b> · HR Executive</span><span class="pill" style="background: #E1E9FA; color: #2A50A8">CL · till 18 Nov</span></div>
+<div class="row"><span style="font-size: 14px"><b>Joel Fernandes</b> · Purchase Officer</span><span class="pill" style="background: #FBE2DE; color: #A32014">Not in yet</span></div>
+</div>
+
+<div class="card">
+<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px">
+<h2 class="h2">Waiting on you</h2>
+<a href="Approvals.dc.html" style="font-weight: 700; font-size: 14px">Open inbox</a>
+</div>
+<div class="row"><span style="font-size: 14px"><b>Neha Kerkar</b> · EL · 1–4 Dec · 3 days</span><span class="pill" style="background: #FFE6D2; color: #A3410A">Clash: 2 away</span></div>
+<div class="row"><span style="font-size: 14px"><b>Joel Fernandes</b> · Missed punch · 12 Nov</span><span class="pill" style="background: #FFF1C7; color: #7A5200">Regularise</span></div>
+<div class="row"><span style="font-size: 14px"><b>Sameer Naik</b> · Q4 goals submitted</span><span class="pill" style="background: #E2EFEC; color: #0B4F4A">PMS</span></div>
+<div class="row"><span style="font-size: 14px"><b>Interview feedback</b> · QA Chemist · Pallavi G.</span><span class="pill" style="background: #E2EFEC; color: #0B4F4A">ATS</span></div>
+</div>
+
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<h2 class="h2">Growth</h2>
+<div>
+<div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px"><span><b>2026 Annual Review</b> · Self-review open</span><span class="cap">due 30 Nov</span></div>
+<div class="bar"><div style="width: 72%; height: 100%; background: #0B4F4A"></div></div>
+<div class="cap" style="margin-top: 6px">4 goals · weighted progress 72%</div>
+</div>
+<a href="Performance.dc.html" class="btn" style="text-decoration: none; text-align: center; background: #E2EFEC; color: #0B4F4A; border: 0; display: block">Write self-review</a>
+<div class="row"><span style="font-size: 14px"><b>4 open roles</b> · refer a friend</span><a href="Recruitment.dc.html" style="font-size: 13px; font-weight: 700">View jobs</a></div>
+<div class="row"><span style="font-size: 14px">Kudos from <b>Priya Dessai</b>: “Great work on the Diwali dispatch.”</span></div>
+</div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

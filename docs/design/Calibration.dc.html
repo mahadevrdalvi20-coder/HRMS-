@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lehar · Calibration</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:#15212B;background:#F4F3EE}
+a{color:#0B4F4A}a:hover{color:#083a36}
+.card{background:#fff;border:1px solid #E3E1DA;border-radius:16px;padding:22px}
+.h2{margin:0;font-size:17px;font-weight:700}
+.cap{font-size:12.5px;color:#55606A;font-weight:500}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:14px;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.sel{font:inherit;font-size:14px;border:1px solid #D6D3CA;border-radius:8px;min-height:36px;padding:0 8px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th{font-size:12px;color:#55606A;text-align:left;font-weight:700;padding:10px 12px;border-bottom:1px solid #E3E1DA;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid #EEECE6;white-space:nowrap}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1080px; background: #F4F3EE">
+<div style="flex: 1 1 248px; max-width: 100%; background: #0B4F4A">
+<dc-import name="Sidebar" active="Performance" hint-size="248px,1080px"></dc-import>
+</div>
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box">
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
+<div>
+<p class="cap" style="margin: 0 0 4px">HR Admin · 2026 Annual Review · calibration</p>
+<h1 style="margin: 0; font-size: 28px; font-weight: 800">Calibrate ratings</h1>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<button class="btn" style="background: #fff; border: 1px solid #E3E1DA">Export CSV</button>
+<button class="btn" style="background: #0B4F4A; color: #fff; border: 0">Publish final ratings</button>
+</div>
+</header>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px">
+<div class="card"><span class="cap">Goals approved</span><div style="font-size: 26px; font-weight: 800">182 / 182</div></div>
+<div class="card"><span class="cap">Self-reviews in</span><div style="font-size: 26px; font-weight: 800">171</div></div>
+<div class="card"><span class="cap">Manager reviews in</span><div style="font-size: 26px; font-weight: 800">164</div></div>
+<div class="card" style="border-color: #F3C99F; background: #FFF8EC"><span class="cap">Overdue reviewers</span><div style="font-size: 26px; font-weight: 800; color: #9A4A12">2</div></div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section class="card" style="flex: 1 1 360px">
+<h2 class="h2">Rating distribution</h2>
+<p class="cap" style="margin: 4px 0 16px">Bars = actual share · marker = company guideline</p>
+<sc-for list="{{dist}}" as="d" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 150px 1fr 70px; align-items: center; gap: 10px; margin-bottom: 12px">
+<span style="font-size: 13.5px; font-weight: 700">{{d.label}}</span>
+<div style="position: relative; height: 22px; background: #F2F1EC; border-radius: 6px">
+<div style="{{d.bar}}"></div>
+<div style="{{d.mark}}"></div>
+</div>
+<span style="font-size: 13px; text-align: right; font-variant-numeric: tabular-nums"><b>{{d.pct}}%</b> · {{d.n}}</span>
+</div>
+</sc-for>
+<p class="cap" style="margin: 6px 0 0">“Meets” is 3 points above the guideline and “Outstanding” is 3 points below. The guideline is only a reference: Lehar never forces a curve.</p>
+</section>
+
+<section class="card" style="flex: 999 1 560px; min-width: 0; padding: 0; overflow-x: auto">
+<div style="padding: 18px 20px 6px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px">
+<h2 class="h2">Finance &amp; Sales · 14 people</h2>
+<span class="cap">Changing a rating needs a reason and is logged</span>
+</div>
+<table>
+<thead><tr><th>Code</th><th>Name</th><th>Goal score</th><th>Self</th><th>Manager</th><th>Final</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td class="mono">KCF0007</td><td><b>Amit Prabhu</b></td><td>3.6</td><td>4</td><td>4</td><td><select class="sel" aria-label="Final rating Amit"><option>4 · Exceeds</option></select></td><td class="cap">—</td></tr>
+<tr><td class="mono">KCF0016</td><td><b>Neha Kerkar</b></td><td>3.2</td><td>4</td><td>3</td><td><select class="sel" aria-label="Final rating Neha"><option>3 · Meets</option></select></td><td class="cap">—</td></tr>
+<tr style="background: #FFF8EC"><td class="mono">KCF0024</td><td><b>Sameer Naik</b></td><td>4.4</td><td>4</td><td>3</td><td><select class="sel" aria-label="Final rating Sameer" style="border: 2px solid #E8833A"><option>4 · Exceeds</option></select></td><td style="color: #9A4A12; font-weight: 700; font-size: 13px">Raised by HR: goal score 4.4</td></tr>
+<tr><td class="mono">KCF0003</td><td><b>Priya Dessai</b></td><td>4.7</td><td>5</td><td>5</td><td><select class="sel" aria-label="Final rating Priya"><option>5 · Outstanding</option></select></td><td class="cap">—</td></tr>
+<tr><td class="mono">KCF0029</td><td><b>Joel Fernandes</b></td><td>2.4</td><td>3</td><td>2</td><td><select class="sel" aria-label="Final rating Joel"><option>2 · Partly meets</option></select></td><td class="cap">Improvement plan</td></tr>
+<tr><td class="mono">KCF0031</td><td><b>Kavya Desai</b></td><td>—</td><td>—</td><td>—</td><td><span class="pill" style="background: #FFF1C7; color: #7A5200">Self-review pending</span></td><td class="cap">Reminder sent</td></tr>
+</tbody>
+</table>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const total = 182;
+    const rows = [
+      ['5 · Outstanding', 12, 10], ['4 · Exceeds', 52, 20], ['3 · Meets', 96, 50], ['2 · Partly meets', 18, 15], ['1 · Needs improvement', 4, 5]
+    ];
+    return {
+      dist: rows.map(([label, n, guide]) => {
+        const pct = Math.round((n / total) * 100);
+        return {
+          label, n, pct,
+          bar: 'position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:#0B4F4A;width:' + pct + '%',
+          mark: 'position:absolute;top:-3px;bottom:-3px;width:3px;border-radius:2px;background:#E8833A;left:calc(' + guide + '% - 1px)'
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

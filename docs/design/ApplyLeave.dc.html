@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lehar · Apply leave</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:#15212B;background:#F4F3EE}
+a{color:#0B4F4A}a:hover{color:#083a36}
+.card{background:#fff;border:1px solid #E3E1DA;border-radius:16px;padding:24px}
+.h2{margin:0;font-size:17px;font-weight:700}
+.cap{font-size:12.5px;color:#55606A;font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:14px;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.in{font:inherit;font-size:14px;border:1px solid #D6D3CA;border-radius:10px;min-height:44px;padding:0 12px;background:#fff;color:#15212B;box-sizing:border-box;width:100%}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700}
+.type{font:inherit;text-align:left;border:1px solid #E3E1DA;background:#fff;border-radius:12px;padding:12px 14px;cursor:pointer;min-height:44px}
+.line{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid #EEECE6;font-size:14px}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1080px; background: #F4F3EE">
+<div style="flex: 1 1 248px; max-width: 100%; background: #0B4F4A">
+<dc-import name="Sidebar" active="My leave" hint-size="248px,1080px"></dc-import>
+</div>
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box">
+<header>
+<p class="cap" style="margin: 0 0 4px">Leave year Jan–Dec 2026 · goes to Rohan Kamat for approval</p>
+<h1 style="margin: 0; font-size: 28px; font-weight: 800">Apply leave</h1>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section class="card" style="flex: 999 1 520px; display: flex; flex-direction: column; gap: 20px">
+<div>
+<div style="font-size: 13px; font-weight: 700; margin-bottom: 8px">Leave type</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px">
+<button class="type" style="border: 2px solid #0B4F4A; background: #E2EFEC"><div style="font-weight: 800">Casual · CL</div><div class="cap">5.5 available</div></button>
+<button class="type"><div style="font-weight: 800">Sick · SL</div><div class="cap">6 available</div></button>
+<button class="type"><div style="font-weight: 800">Earned · EL</div><div class="cap">21.5 available</div></button>
+<button class="type"><div style="font-weight: 800">Paternity</div><div class="cap">5 days, on request</div></button>
+<button class="type"><div style="font-weight: 800">Loss of pay</div><div class="cap">No limit</div></button>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+<label class="field">From<input class="in" value="Fri, 27 Nov 2026"></label>
+<label class="field">To<input class="in" value="Mon, 30 Nov 2026"></label>
+<div class="field">Duration
+<div style="display: flex; border: 1px solid #D6D3CA; border-radius: 10px; overflow: hidden; min-height: 44px">
+<button class="btn" style="flex: 1; border: 0; border-radius: 0; background: #0B4F4A; color: #fff">Full day</button>
+<button class="btn" style="flex: 1; border: 0; border-radius: 0; background: #fff">Half day</button>
+</div>
+</div>
+</div>
+<label class="field">Reason<textarea class="in" rows="3" style="padding: 10px 12px; min-height: 84px">Family function in Margao.</textarea></label>
+<div style="border: 1px dashed #B9B6AC; border-radius: 12px; padding: 14px; display: flex; gap: 12px; align-items: center; background: #FBFAF7">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#55606A" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"></path></svg>
+<span class="cap" style="font-size: 13.5px">Medical certificate, needed for Sick Leave of more than 2 days (PDF/JPG, up to 5 MB)</span>
+</div>
+<div style="background: #FFF4E8; border: 1px solid #F3C99F; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+<b style="color: #9A4A12">Example: when your balance is short</b>
+<span style="font-size: 14px">You asked for 7 days of CL but have 5.5. Apply <b>5.5 days as CL</b> and convert <b>1.5 days to Loss of Pay</b>?</span>
+<div style="display: flex; gap: 10px; flex-wrap: wrap"><button class="btn" style="background: #9A4A12; color: #fff; border: 0">Convert excess to LOP</button><button class="btn" style="background: #fff; border: 1px solid #E3E1DA">Change dates</button></div>
+</div>
+<div style="display: flex; gap: 10px; justify-content: flex-end">
+<button class="btn" style="background: #fff; border: 1px solid #E3E1DA">Save draft</button>
+<button class="btn" style="background: #0B4F4A; color: #fff; border: 0; min-width: 180px">Submit 2 days of CL</button>
+</div>
+</section>
+
+<aside style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 20px">
+<section class="card">
+<h2 class="h2">How 2 days were counted</h2>
+<p class="cap" style="margin: 6px 0 8px">Weekly offs and holidays are never counted. No sandwich rule.</p>
+<div class="line"><span>Fri 27 Nov</span><span class="pill" style="background: #E1E9FA; color: #2A50A8">1 day</span></div>
+<div class="line"><span>Sat 28 Nov</span><span class="pill" style="background: #ECEDEF; color: #4F5862">Weekly off · 0</span></div>
+<div class="line"><span>Sun 29 Nov</span><span class="pill" style="background: #ECEDEF; color: #4F5862">Weekly off · 0</span></div>
+<div class="line"><span>Mon 30 Nov</span><span class="pill" style="background: #E1E9FA; color: #2A50A8">1 day</span></div>
+<div class="line" style="font-weight: 800"><span>Total</span><span>2 working days</span></div>
+<p class="cap" style="margin: 8px 0 0">At the Verna plant, Saturday is a working day, so this would be 3 days.</p>
+</section>
+<section class="card">
+<h2 class="h2">CL after approval</h2>
+<div class="line"><span>Opening + credited</span><b>8</b></div>
+<div class="line"><span>Used</span><b>2</b></div>
+<div class="line"><span>Other pending (24 Nov, ½ day)</span><b>0.5</b></div>
+<div class="line"><span>This request</span><b>2</b></div>
+<div class="line"><span>Left after approval</span><b style="color: #0B4F4A; font-size: 18px">3.5</b></div>
+</section>
+<section class="card" style="background: #FFF8EC; border-color: #F3D9A6">
+<b style="color: #7A5200">Team note</b>
+<p style="margin: 6px 0 0; font-size: 14px">Neha Kerkar has asked for EL from 1 to 4 Dec. Nobody else is away on these dates.</p>
+</section>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

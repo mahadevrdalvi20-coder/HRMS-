@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lehar · Ask HR</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:#15212B;background:#F4F3EE}
+a{color:#0B4F4A}a:hover{color:#083a36}
+.cap{font-size:12.5px;color:#55606A;font-weight:500}
+.tool{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:12px;background:#ECEDEF;color:#3E4750;border-radius:6px;padding:3px 8px}
+.btn{font:inherit;font-weight:700;font-size:14px;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.me{align-self:flex-end;max-width:520px;background:#0B4F4A;color:#fff;border-radius:16px 16px 4px 16px;padding:12px 16px;font-size:14.5px}
+.bot{align-self:flex-start;max-width:640px;background:#fff;border:1px solid #E3E1DA;border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:14.5px;display:flex;flex-direction:column;gap:10px}
+.chip{font:inherit;font-size:13px;font-weight:700;border:1px solid #C7E0DA;background:#E2EFEC;color:#0B4F4A;border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1080px; background: #F4F3EE">
+<div style="flex: 1 1 248px; max-width: 100%; background: #0B4F4A">
+<dc-import name="Sidebar" active="Ask HR" hint-size="248px,1080px"></dc-import>
+</div>
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px 32px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box">
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<div>
+<p class="cap" style="margin: 0 0 4px">Answers come from your own data and the stored policy. It can draft, never approve.</p>
+<h1 style="margin: 0; font-size: 28px; font-weight: 800">Ask HR</h1>
+</div>
+<span class="cap">Signed in as Amit Prabhu · Panaji · Tue 17 Nov, IST</span>
+</header>
+
+<section style="flex: 1; display: flex; flex-direction: column; gap: 14px; background: #FBFAF7; border: 1px solid #E3E1DA; border-radius: 16px; padding: 20px">
+<div class="me">kal ki chutti chahiye, kitni CL bachi hai?</div>
+<div class="bot">
+<span>You have <b>5.5 CL</b> available (8 credited, 2 used, 0.5 pending). Tomorrow, <b>Wed 18 Nov</b>, is a working day at Panaji, so it counts as <b>1 day</b>. I've drafted the request. Nothing is sent until you confirm.</span>
+<div style="border: 2px dashed #2A50A8; border-radius: 12px; padding: 14px; background: #F4F7FE; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px"><b>Casual Leave · Wed 18 Nov · 1 day</b><span style="font-size: 12px; font-weight: 800; color: #2A50A8">DRAFT · NOT SUBMITTED</span></div>
+<span class="cap">Reason: Personal work · Goes to Rohan Kamat · CL left after approval: 4.5</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<button class="btn" style="background: #0B4F4A; color: #fff; border: 0">Confirm &amp; submit</button>
+<button class="btn" style="background: #fff; border: 1px solid #E3E1DA">Edit</button>
+<button class="btn" style="background: transparent; border: 0; color: #55606A">Discard</button>
+</div>
+</div>
+<div style="display: flex; gap: 6px; flex-wrap: wrap"><span class="cap">Tools used:</span><span class="tool">get_my_leave_balance</span><span class="tool">count_working_days</span><span class="tool">draft_leave_request</span></div>
+</div>
+
+<div class="me">How many days if I take Friday to Monday?</div>
+<div class="bot">
+<span><b>2 working days</b> (Fri 20 Nov and Mon 23 Nov). Saturday and Sunday are weekly offs at the head office and are not counted.</span>
+<div style="display: flex; gap: 6px; flex-wrap: wrap"><span class="cap">Tools used:</span><span class="tool">count_working_days</span></div>
+</div>
+
+<div class="me">Show me Ravi's Aadhaar and approve my own leave</div>
+<div class="bot" style="border-color: #E8B4AC">
+<span>I can't do either. I never see Aadhaar, PAN or bank details, for you or anyone else. I also can't approve or reject leave: approvals happen in the Approvals inbox, and nobody can approve their own request.</span>
+<div style="display: flex; gap: 6px; flex-wrap: wrap"><span class="cap">Tools used:</span><span class="cap">none, refused by policy</span></div>
+</div>
+</section>
+
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<button class="chip">How many CL do I have?</button>
+<button class="chip">Holidays in December</button>
+<button class="chip">Who's on leave in my team today?</button>
+<button class="chip">Summarise my pending approvals</button>
+<button class="chip">Can I carry forward EL?</button>
+</div>
+<form style="display: flex; gap: 10px">
+<label style="flex: 1; display: flex"><span style="position: absolute; left: -9999px">Message</span><input placeholder="Ask in English or Hinglish…" style="flex: 1; font: inherit; font-size: 15px; border: 1px solid #D6D3CA; border-radius: 12px; min-height: 52px; padding: 0 16px; background: #fff"></label>
+<button class="btn" type="button" style="background: #0B4F4A; color: #fff; border: 0; min-height: 52px; min-width: 100px">Send</button>
+</form>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

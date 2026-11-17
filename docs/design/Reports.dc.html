@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lehar · Month-end report</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:#15212B;background:#F4F3EE}
+a{color:#0B4F4A}a:hover{color:#083a36}
+.card{background:#fff;border:1px solid #E3E1DA;border-radius:16px;padding:22px}
+.cap{font-size:12.5px;color:#55606A;font-weight:500}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:13px}
+.btn{font:inherit;font-weight:700;font-size:14px;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.sel{font:inherit;font-size:14px;border:1px solid #E3E1DA;border-radius:10px;min-height:44px;padding:0 12px;background:#fff;color:#15212B}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th{font-size:12px;color:#55606A;text-align:right;font-weight:700;padding:10px 12px;border-bottom:1px solid #E3E1DA;white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid #EEECE6;white-space:nowrap;text-align:right}
+th:nth-child(-n+2),td:nth-child(-n+2){text-align:left}
+.stat{background:#fff;border:1px solid #E3E1DA;border-radius:14px;padding:14px 16px}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1080px; background: #F4F3EE">
+<div style="flex: 1 1 248px; max-width: 100%; background: #0B4F4A">
+<dc-import name="Sidebar" active="Reports" hint-size="248px,1080px"></dc-import>
+</div>
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box">
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
+<div>
+<p class="cap" style="margin: 0 0 4px">For the payroll vendor · PAN masked · Aadhaar never included</p>
+<h1 style="margin: 0; font-size: 28px; font-weight: 800">Month-end summary</h1>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<select class="sel" aria-label="Month"><option>October 2026</option></select>
+<select class="sel" aria-label="Location"><option>All locations</option></select>
+<button class="btn" style="background: #0B4F4A; color: #fff; border: 0">Download CSV</button>
+</div>
+</header>
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px">
+<div class="stat"><span class="cap">Employees</span><b>182</b></div>
+<div class="stat"><span class="cap">Avg days present</span><b>21.4</b></div>
+<div class="stat"><span class="cap">Leave days taken</span><b>214.5</b></div>
+<div class="stat"><span class="cap">LOP days</span><b>17.5</b></div>
+<div class="stat" style="border-color: #F3C99F; background: #FFF8EC"><span class="cap">Unresolved missed punches</span><b style="color: #9A4A12">3</b></div>
+</section>
+<section class="card" style="padding: 0; overflow-x: auto">
+<table>
+<thead><tr><th>Code</th><th>Name</th><th>Present</th><th>WFH</th><th>CL</th><th>SL</th><th>EL</th><th>Late</th><th>LOP</th><th>Holidays</th><th>Weekly off</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td class="mono">KCF0007</td><td>Amit Prabhu</td><td>18</td><td>2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>9</td><td><b>31</b></td></tr>
+<tr><td class="mono">KCF0014</td><td>Ravi Shetty</td><td>23.5</td><td>0</td><td>1</td><td>0</td><td>0</td><td>3</td><td>0.5</td><td>2</td><td>4</td><td><b>31</b></td></tr>
+<tr><td class="mono">KCF0016</td><td>Neha Kerkar</td><td>15</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>9</td><td><b>31</b></td></tr>
+<tr><td class="mono">KCF0021</td><td>Meera Sawant</td><td>23</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>4</td><td><b>31</b></td></tr>
+<tr><td class="mono">KCF0011</td><td>Sunil Gaonkar</td><td>24</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>4</td><td><b>31</b></td></tr>
+<tr><td class="mono">KCF0003</td><td>Priya Dessai</td><td>13</td><td>2</td><td>0</td><td>0</td><td>5</td><td>0</td><td>0</td><td>2</td><td>9</td><td><b>31</b></td></tr>
+</tbody>
+</table>
+<div class="cap" style="padding: 14px 16px">Each row adds up to the days in the month: present + WFH + leave + LOP + holidays + weekly offs = 31. Late is a count, not days: 3 Lates become ½ day of LOP.</div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

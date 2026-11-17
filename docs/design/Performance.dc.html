@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lehar · My goals and review</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:#15212B;background:#F4F3EE}
+a{color:#0B4F4A}a:hover{color:#083a36}
+.card{background:#fff;border:1px solid #E3E1DA;border-radius:16px;padding:22px}
+.h2{margin:0;font-size:17px;font-weight:700}
+.cap{font-size:12.5px;color:#55606A;font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:14px;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.bar{height:8px;border-radius:99px;background:#EEECE6;overflow:hidden}
+.rate{font:inherit;font-weight:800;font-size:14px;width:40px;height:40px;border-radius:10px;border:1px solid #D6D3CA;background:#fff;cursor:pointer}
+.step{flex:1 1 120px;font-size:12.5px;font-weight:700;padding:10px 12px;border-radius:10px}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1080px; background: #F4F3EE">
+<div style="flex: 1 1 248px; max-width: 100%; background: #0B4F4A">
+<dc-import name="Sidebar" active="Performance" hint-size="248px,1080px"></dc-import>
+</div>
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box">
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
+<div>
+<p class="cap" style="margin: 0 0 4px">Performance · reviewer: Rohan Kamat</p>
+<h1 style="margin: 0; font-size: 28px; font-weight: 800">2026 Annual Review</h1>
+</div>
+<span class="pill" style="background: #FFF1C7; color: #7A5200; font-size: 13px; padding: 6px 12px">Self-review due Mon, 30 Nov</span>
+</header>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<span class="step" style="background: #DDF1E5; color: #17663F">1 · Goals set ✓</span>
+<span class="step" style="background: #DDF1E5; color: #17663F">2 · Check-ins ✓</span>
+<span class="step" style="background: #0B4F4A; color: #fff">3 · Self-review</span>
+<span class="step" style="background: #fff; color: #55606A; border: 1px solid #E3E1DA">4 · Manager review</span>
+<span class="step" style="background: #fff; color: #55606A; border: 1px solid #E3E1DA">5 · Calibration</span>
+<span class="step" style="background: #fff; color: #55606A; border: 1px solid #E3E1DA">6 · Final rating</span>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section class="card" style="flex: 999 1 560px; display: flex; flex-direction: column; gap: 4px; padding-top: 18px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px">
+<h2 class="h2">My goals · weights total 100%</h2>
+<span class="cap">Weighted progress <b style="color: #0B4F4A; font-size: 15px">72%</b></span>
+</div>
+<sc-for list="{{goals}}" as="g" hint-placeholder-count="4">
+<div style="border-top: 1px solid #EEECE6; padding: 16px 0; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<div style="flex: 1 1 300px"><b style="font-size: 15px">{{g.title}}</b><div class="cap" style="margin-top: 2px">{{g.kpi}}</div></div>
+<span class="pill" style="background: #F2F1EC; color: #15212B; align-self: flex-start">Weight {{g.weight}}%</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<div class="bar" style="flex: 1"><div style="{{g.barStyle}}"></div></div>
+<b style="font-size: 13px; min-width: 40px; text-align: right">{{g.progress}}%</b>
+</div>
+<div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap">
+<span class="cap" style="margin-right: 6px">Self-rating</span>
+<sc-for list="{{g.rates}}" as="r" hint-placeholder-count="5">
+<button class="rate" style="{{r.style}}" aria-label="Rate {{r.n}}">{{r.n}}</button>
+</sc-for>
+<span class="cap" style="margin-left: 6px">{{g.label}}</span>
+</div>
+</div>
+</sc-for>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 700; border-top: 1px solid #EEECE6; padding-top: 16px">Overall self-assessment
+<textarea rows="3" style="font: inherit; font-size: 14px; border: 1px solid #D6D3CA; border-radius: 10px; padding: 10px 12px">Closed the books 2 days earlier every month from June. GST reconciliation is 3 of 4 ledgers into Tally Prime. Vendor ageing is still behind target.</textarea>
+</label>
+<div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 12px">
+<button class="btn" style="background: #fff; border: 1px solid #E3E1DA">Save draft</button>
+<button class="btn" style="background: #0B4F4A; color: #fff; border: 0">Submit to Rohan</button>
+</div>
+</section>
+
+<aside style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 20px">
+<section class="card" style="display: flex; flex-direction: column; gap: 10px">
+<h2 class="h2">Rating scale</h2>
+<div style="font-size: 14px; display: grid; grid-template-columns: 28px 1fr; gap: 6px 8px">
+<b>5</b><span>Outstanding</span><b>4</b><span>Exceeds expectations</span><b>3</b><span>Meets expectations</span><b>2</b><span>Partly meets</span><b>1</b><span>Needs improvement</span>
+</div>
+</section>
+<section class="card" style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 class="h2">Feedback &amp; kudos</h2><button class="btn" style="min-height: 36px; padding: 6px 12px; background: #E2EFEC; color: #0B4F4A; border: 0">+ Give</button></div>
+<div style="background: #FFF8EC; border-radius: 12px; padding: 12px 14px; font-size: 14px"><b>Priya Dessai</b> · kudos<br>“Great work on the Diwali dispatch. Invoices went out the same day.”<div class="cap" style="margin-top: 4px">2 Nov · visible to everyone</div></div>
+<div style="background: #F7F6F2; border-radius: 12px; padding: 12px 14px; font-size: 14px"><b>Rohan Kamat</b> · check-in<br>“Vendor ageing: let's agree a weekly review with Purchase.”<div class="cap" style="margin-top: 4px">15 Sep · private to you and Rohan</div></div>
+</section>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const labels = ['', 'Needs improvement', 'Partly meets', 'Meets expectations', 'Exceeds expectations', 'Outstanding'];
+    const g = (title, kpi, weight, progress, rating) => ({
+      title, kpi, weight, progress,
+      barStyle: 'height:100%;border-radius:99px;background:#0B4F4A;width:' + progress + '%',
+      label: rating ? labels[rating] : 'Not rated yet',
+      rates: [1, 2, 3, 4, 5].map((n) => ({ n, style: n === rating ? 'background:#0B4F4A;color:#fff;border-color:#0B4F4A' : '' }))
+    });
+    return {
+      goals: [
+        g('Close monthly books by working day 5', 'Target: 12 of 12 months · Actual: 10', 40, 80, 4),
+        g('Reduce vendor ageing above 60 days', 'Target: below ₹8 L · Actual: ₹11.2 L', 25, 65, 3),
+        g('Move GST reconciliation to Tally Prime', 'Target: all 4 ledgers by Dec · 3 of 4 moved', 20, 75, 0),
+        g('Train 2 accounts executives on TDS', 'Target: 2 certified · Actual: 1', 15, 60, 0)
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
